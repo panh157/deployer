@@ -290,7 +290,7 @@ function run($command, $options = [])
         $command = "cd $workingPath && ($command)";
     }
 
-    $env = get('env', []) + ($options['env'] ?? []);
+    $env = array_merge(get('env', []) , ($options['env'] ?? []));
     if (!empty($env)) {
         $env = array_to_string($env);
         $command = "export $env; $command";
